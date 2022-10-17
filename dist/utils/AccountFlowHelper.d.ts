@@ -1,0 +1,12 @@
+import { DBOperator } from "../database/DBOperator";
+import { AccountRequest } from "../dataModels/AccountRequest";
+import { BillInfosRequest } from "../dataModels/BillInfosRequest";
+import { BillRequest } from "../dataModels/BillRequest";
+import { CreditCardRequest } from "../dataModels/CreditCardRequest";
+import { TransactionRequest } from "../dataModels/TransactionRequest";
+export declare function createOrUpdateBillInfos(billInfoReq: BillInfosRequest, dbOperator: DBOperator): Promise<number>;
+export declare function updateBillInfos(billInfoReq: BillInfosRequest, dbOperator: DBOperator): Promise<number>;
+export declare function createOrUpdateBills(billRequest: BillRequest, dbOperator: DBOperator): Promise<void>;
+export declare function checkAccount(accountRequest: AccountRequest, dbOperator: DBOperator): Promise<number>;
+export declare function createOrUpdateCards(creditCardReq: CreditCardRequest, dbOperator: DBOperator): Promise<void>;
+export declare function createBillTransactionForCC(smsId: number, transactionReq: TransactionRequest, dbOperator: DBOperator): Promise<void>;

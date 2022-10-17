@@ -1,0 +1,15 @@
+
+{
+  "compilerOptions": {
+    "module": "commonjs",// Required for node.js application
+    "target": "es2016", // code will be transpiled to this version
+    "declaration": true,// To generate .d.ts files
+    "outDir": "./dist"// compiled files will be written to ./dist directory
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules", 
+    "**/test/*"]
+}

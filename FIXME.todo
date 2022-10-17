@@ -1,0 +1,61 @@
+1. Handling date formats - use moment to parse date format - DONE (usng dayjs)
+2. missing txn_date_source - DONE
+2. For all ts enums, we also need key value pairs for JS. cant import enums in JS
+4. sms_regexes mc9 and mc10, date_formats - DONE
+5. smsStatus in create sms or we update sms status after parsing. Then need an interface for updatin sms_status - DONE
+6. All Create and update wrapped in try-catch (Also all fetch calls)
+7. parseDateTime to be called in regexParser and not all across the code base - DONE
+8. SmsAt and smsSentAt are string | Date - Maintain consistency
+9. Recurrence Cycle Type - Use in defining the cycle
+
+
+
+Code Review -
+1. every update/create inside try/catch
+2. After fetching matched groups, use matching columns enum (also create Number and Date enum),
+   and then clean dates and numbers/strings in matching layer before processing accounts
+3. fetchAccountIdByAccountTypeAndNumber also search by sms sender(issuer) -- DONE
+4. while storing sms Initialise with TO_BE_PARSED status -- DONE
+5. If account number is not there - TO_BE_PARSED_LATER (Every day we will pick these sms and again run it hoping we figure) -- DONE
+6. If account balance is there then only create a record in DB (Default value null, then handle only if it is not null)
+7. Before storing any transaction, check for duplicate and matching transactions
+8. In matching columns if upi_id is there then update UPI id in account - DONE
+9. To handle modify description 
+10. Matching only if repayment transaction -- DONE
+11. store cc only if available or outsanding balance is present
+12. add cc_outstanding_balance(from matching types) in cards table, cc_total_limit to be added 
+
+
+TEST -
+1. all day formats validate 
+9. RecurrenceCycle Type - Use in defining the cycle
+10. fintAccountTypeAndAccountNumber needs smsFrom to ensure that we are searching within the same institution
+
+
+
+1. Some do not have account numbers. Parse for later. if it does not happen then create
+new account with number XXXXXX and then go back and change it or get customer to change
+
+
+TODO - Sep 23 2022
+
+1. If account balance is 0, dont call update. 
+2. change fetchTransactionByAmountBetweenDates to fetchTransactionsByAmountBetweenDates
+3. Replace one or more '?' from sms
+4. Remove trailing hrs from date formats
+
+
+Notes:
+dc_autopay and dc_autopay as debit transactions
+csssbi, scisms - starts with 'mab sb debit' - txn type - fees and charges
+cbssbi - ( orig 384, 741) - 180, 182, 724, 727, 
+dbsbnk - ( orig 756) - 759, 763
+idbi account number starts with 'NN'
+idbi, 681 RPAY_POS/<merchant name>
+idbi: DET: (original: 419) duplicates - 429, 474, 477
+MAB_CHARGE_OCT - search to change ttype to mab
+idbi: DET: (original: 419) duplicates - 429, 474, 477,
+scisms - MAB SB Debit , CDM Charge DTR
+yesbank neft
+canarabank description with debited towards - 567, 571, 576, 578, 609, 883, 885 - (original 574)
+canarabank description with credited towards - (original 572) - 570, 588, 599 , 610, 878, 879

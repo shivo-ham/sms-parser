@@ -1,0 +1,35 @@
+export enum MatchingColumnType {
+  transaction_amount = 'tranaction_amount', //Transaction Amount
+  transaction_description = 'transaction_description', //Transaction Description
+  account_number = 'account_number', //Account Number
+  transaction_date = 'transaction_date', //Transaction Date
+  available_balance = 'available_balance', //Account Balance
+  value_date = 'value_date', //Value Date
+  merchant = 'merchant', //Merchant Name
+  mab = 'mab', //Minimum account balance
+  cc_outstanding_balance = 'cc_outstanding_balance', //Outstanding balance on CC
+  cc_avialable_limit = 'cc_avialable_limit', //Available limit for CC
+  cc_total_limit = 'cc_total_limit', //Total Limit for CC
+  cc_min_amt_due = 'cc_min_amt_due', //Minimum amount due
+  cc_total_amt_due = 'cc_total_amt_due', //Total Amount Due
+  cc_pmt_due_date = 'cc_pmt_due_date', //Payment Due Date
+  cc_cash_limit = 'cc_cash_limit', //Cash withdrawal limit on CC
+  cc_cash_outstanding_balance = 'cc_cash_outstanding_balance', //Outstanding Cash balance
+  cc_available_cash_limit = 'cc_available_cash_limit', //Available Cash Limit
+  loan_amount = 'loan_amount', //Loan Amount
+  outstanding_loan_amount = 'outstanding_loan_amount', //Outstanding Loan Amount
+  loan_emi_amount = 'loan_emi_amount', //EMI amount for loan
+  loan_emi_due_date = 'loan_emi_due_date', //Loan EMI due date
+  loan_emi_pmt_date = 'loan_emi_pmt_date', //Loan EMI payment date
+  dummy = 'dummy', //Dummy
+  transaction_reference_no = 'transaction_reference_no', //Txn reference number
+  bill_generation_date = 'bill_generation_date', //Bill Generation Date
+  bill_due_date = 'bill_due_date', //Bill Due Date
+  bill_amount = 'bill_amount', //Bill Amount
+  total_bill_amount = 'total_bill_amount', //Total Bill Amount
+  bill_payment_amount = 'bill_payment_amount', //Bill Payment Amount
+  bill_payment_date = 'bill_payment_date', //Bill Payment Date
+  cc_brand_name = 'cc_brand_name', //Credit card Brand Name
+  upi_number = 'upi_number', //CASA UPI Number
+  bill_balance_due = 'bill_balance_due', //Bill balance Due
+}
